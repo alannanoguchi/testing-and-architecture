@@ -3,44 +3,62 @@
 # TODO: Use 'extract method' refactoring technique to improve this code. If required, use
 #       'replace temp variable with query' technique to make it easier to extract methods.
 class Employer:    
+
     def __init__(self, name):
         self.name = name
+
     def send(self, students):
         print("Students' contact info were sent to", self.name + '.')
 
 class Student:
+
     def __init__(self, gpa, name):
         self.gpa = gpa
         self.name = name
+
     def get_gpa(self):
         return self.gpa
+
     def send_congrat_email(self):
         print("Congrats", self.name + ". You graduated successfully!")
 
 class School:
+
     def __init__(self, students) -> None:
         self.students = students
+        
+
     def process_graduation(self):
-        # Find the students in the school who have successfully graduated.
+        """Find the students in the school who have successfully graduated."""
+        passing_student = self.passing_students()
+
+        # print student's name who graduated.
+        print('*** Student who graduated *** ')
+        for s in passing_student:
+            s.send_congrat_email()
+            print(s.name)
+        print('****************************')
+
+        
+    def passing_students(self):
+        '''Return all of the passing students.'''
         min_gpa = 2.5 # minimum acceptable GPA
         passed_students = []
         for s in self.students:
             if s.get_gpa() > min_gpa:
                 passed_students.append(s)
-
-        # print student's name who graduated.
-        print('*** Student who graduated *** ')
-        for s in passed_students:
-            print(s.name)
-        print('****************************')
-        # Send congrat emails to them.
-        for s in passed_students:
-            s.send_congrat_email()
-        # Find the top 10% of them and send their contact to the top employers
-        passed_students.sort(key=lambda s: s.get_gpa())
+        return passed_students
+        
+    def find_top_ten(self, passing_student):
+        # Find the top 10% of them 
+        passing_student.sort(key=lambda s: s.get_gpa())
         percentile = 0.9
-        index = int(percentile * len(passed_students))
-        top_10_percent = passed_students[index:]
+        index = int(percentile * len(passing_student))
+        return passing_student[index:]
+        # return top_10_percent
+
+    def send_employee_referral(self, top_employers, top_10_percent):
+        '''Send contact email to top employeers.'''
         top_employers = [Employer('Microsoft'), Employer('Free Software Foundation'), Employer('Google')]
         for e in top_employers:
             e.send(top_10_percent)

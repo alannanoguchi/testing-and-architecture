@@ -2,13 +2,13 @@
 # Move Field
 
 class Car:
-    def __init__(self, engine, wheels, cabin, tpms_di, fuel_tank):
+    def __init__(self, engine, wheels, cabin, fuel_tank):
         self.engine = engine
         # TODO: tpms is better to be in the Wheel class. 
         # Each wheel has a single tpms attached to it. 
         # Thus, instead of having a list of tpms in 'Car' class
         # have each of the tpms in each 'Wheel'.
-        self.tpms_list = tpms_di  # Tire Pressure Monitoring System.
+        # self.tpms_list = tpms_di  # Tire Pressure Monitoring System.
         self.wheels = wheels
         # Set wheels' car reference into each wheel.
         for w in wheels:
@@ -23,7 +23,8 @@ class Wheel:
     #       initilaize the 'Wheel' object or you can create
     #       a setter method to set the tpms of the wheel. (you can do 
     #       both of course.)
-    def __init__(self, car = None, wheel_location = None):
+    def __init__(self, tpms_di, car = None, wheel_location = None):
+        self.tpms_list = tpms_di  # Tire Pressure Monitoring System.
         self.car = car
         self.wheel_location = wheel_location
 

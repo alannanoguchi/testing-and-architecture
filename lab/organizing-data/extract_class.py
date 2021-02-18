@@ -29,4 +29,7 @@ for key, value in foods.items():
     print("***")
 
 
-
+"""Refractor Notes:
+1. create a class for this for easy reading
+2. 
+""" 

@@ -9,15 +9,13 @@ class Enemy:
     def take_damage(self, damage):
         self.health -= damage
 
-
-class AngryMushroom(Enemy):
+class AngryMushroom(Enemy):  # inheriting from the Enemy Superclass
     
-    def __init__(self):
-        pass
+    # def __init__(self):
+    #     pass  # the pass keyword hides things. So it will be hiding this function. If we aren't using this function, omit it.
     
     def spread_poison(self):
         print('spreading poison!')
-
 
 class AngryBot(Enemy):
     
@@ -30,8 +28,6 @@ class AngryBot(Enemy):
     def shoot(self):
         print("shot a bullet!")
         self.n_bullets -= 1
-
-
 
 class AgressiveAlligator(Enemy):
     

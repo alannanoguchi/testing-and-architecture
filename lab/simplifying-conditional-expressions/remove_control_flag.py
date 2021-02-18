@@ -1,13 +1,13 @@
 # by Kami Bigdely
 # Remove control flag
 def find_food(food, fridge):
-    found = False
+    # found = False
     for item in fridge:
         if food in item:
-            found = True
+            # found = True
             item_name = item
             break
-    if found:
+    if item in fridge:
         return item_name
     else:
         return None

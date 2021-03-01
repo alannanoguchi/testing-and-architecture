@@ -39,7 +39,7 @@ class Wheel:
     def read_tire_pressure(self):
         # TODO: After making tpms an attribute of 'Wheel' class,
         #       rewrite the following.
-        return self.car.tpms_di[self.wheel_location].get_pressure()
+        return self.tpms_list[self.wheel_location].get_pressure()
     
     def set_car(self, car):
         self.car = car
@@ -85,6 +85,4 @@ tpms_di = {'front-right': Tpms(983408543), 'front-left':Tpms(4343083),
 
 fuel_tank = FuelTank()
 
-my_car = Car(engine, wheels, cabin, tpms_di, fuel_tank)
-
-
+my_car = Car(engine, wheels, cabin, fuel_tank)

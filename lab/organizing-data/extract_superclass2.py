@@ -1,32 +1,39 @@
 # by Kami Bigdely
 # Extract superclass.
-class Circle:
+
+class Coordinate:
+    def __init__(self, x, y, visible = True):
+        self.x = x
+        self.y = y
+        self.visible = visible
+
+    def set_visible(self, is_visible):
+        self.visible = is_visible
+
+
+class Circle(Coordinate):
     
     def __init__(self, x, y, r, visible = True):
-      self.center_x = x
-      self.center_y = y
+      super().__init__(x, y)
       self.r = r
-      self.visible = visible
       
     def display(self):
         print('drew the circle.')
         
-    def set_visible(self,is_visible):
-        self.visible = is_visible
+    # def set_visible(self, is_visible):
+    #     self.visible = is_visible
         
     def get_center(self):
-        return self.center_x, self.center_y
+        return self.x, self.y
     
     
-class Rectangle:
+class Rectangle(Coordinate):
     
     def __init__(self, x, y, width, height, visible = True):
         # left-bottom corner.
-        self.x = x
-        self.y = y
+        super().__init__(x, y)
         self.width = width
         self.height = height
-        self.visible = visible
         
     def display(self):
         if self.visible:

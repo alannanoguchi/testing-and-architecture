@@ -12,7 +12,7 @@ class Enemy:
 class AngryMushroom(Enemy):  # inheriting from the Enemy Superclass
     
     # def __init__(self):
-    #     pass  # the pass keyword hides things. So it will be hiding this function. If we aren't using this function, omit it.
+    #     pass  # the pass keyword hides things. So it will be hiding this function. If we aren't using this function, omit it. Since we already have the initializer in the superclass, we do not need it here.
     
     def spread_poison(self):
         print('spreading poison!')
